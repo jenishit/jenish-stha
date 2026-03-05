@@ -3,6 +3,7 @@
 import GridBackground from '@/components/background/GridBackground';
 import Navbar from '@/components/common/Navbar';
 import HeroSection from '@/components/hero/HeroSection';
+import MotherboardScene from '@/components/robotics/MotherboardScene';
 import DomainCards from '@/components/sections/DomainCards';
 import SkillsDashboard from '@/components/sections/SkillsDashboard';
 import ProjectsLab from '@/components/sections/ProjectsLab';
@@ -30,6 +31,9 @@ export default function Home() {
       <div className="relative z-10">
         {/* Hero Section */}
         <HeroSection />
+
+        {/* 3D Projects Motherboard */}
+        <MotherboardScene />
 
         {/* Engineering Domains - replaces old text-based About */}
         <ScrollReveal direction="up" duration={0.8}>

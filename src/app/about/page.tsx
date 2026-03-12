@@ -101,7 +101,7 @@ export default function AboutPage() {
 
           {/* Skills dashboard */}
           <div>
-            <p className="section-tag mb-6">// skill_monitor.exe — LIVE READINGS</p>
+            <p className="section-tag mb-6">{'// skill_monitor.exe — LIVE READINGS'}</p>
             <div className="grid grid-cols-1 gap-2">
               {skills.map((skill, i) => (
                 <SkillCard key={skill.symbol} skill={skill} index={i} />

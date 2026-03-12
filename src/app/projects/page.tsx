@@ -6,6 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { projects, ProjectCategory } from "@/data/projects";
 import { useProjectStore } from "@/store/useProjectStore";
 import { staggerContainer, fadeUp } from "@/lib/motion";
+import Image from "next/image";
 
 const filters: { label: string; value: ProjectCategory | "all" }[] = [
   { label: "All", value: "all" },
@@ -69,7 +70,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
       {/* Image */}
       <div className="relative h-44 overflow-hidden bg-surface-2">
-        <img
+        <Image
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

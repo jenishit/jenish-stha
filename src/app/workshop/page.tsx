@@ -599,7 +599,7 @@ export default function WorkshopPage() {
           {/* Header */}
           <div className="px-6 pt-3 pb-0 flex items-start justify-between shrink-0">
             <div>
-              <p className="section-tag">// workshop.3d — MARK L SUIT-UP</p>
+              <p className="section-tag">{'// workshop.3d — MARK L SUIT-UP'}</p>
               <h1 className="font-display text-4xl md:text-5xl text-text-primary tracking-wide leading-none mt-1">
                 BUILD LAB
               </h1>

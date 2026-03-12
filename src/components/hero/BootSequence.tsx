@@ -32,11 +32,11 @@ export default function BootSequence() {
 
   if (!isComplete) {
     return (
-      <div className="fixed inset-0 bg-[#0B0F1A] z-50 flex items-center justify-center">
+      <div className="fixed inset-0 bg-gradient-to-br from-royal-dark via-royal-navy to-royal-deep z-50 flex items-center justify-center">
         <div className="max-w-2xl w-full px-8">
-          <div className="font-mono text-[#00FFD5] space-y-2">
+          <div className="font-display text-luxury-gold space-y-3">
             {messages.map((msg, idx) => (
-              <div key={idx} className="text-lg">
+              <div key={idx} className="text-lg font-500 tracking-wide">
                 {msg}
                 {idx === messages.length - 1 && <span className="animate-pulse">_</span>}
               </div>

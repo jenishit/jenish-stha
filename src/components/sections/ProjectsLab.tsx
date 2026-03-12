@@ -11,17 +11,14 @@ export default function ProjectsLab() {
         {/* Section Header */}
         <div className="mb-20">
           <div className="flex items-center gap-4 mb-8">
-            <div className="h-1 w-12 bg-gradient-to-r from-[#00FFD5] to-[#7C3AED]" />
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              <span className="text-[#00FFD5]">{'[ '}</span>
-              Projects Lab
-              <span className="text-[#00FFD5]">{' ]'}</span>
+            <div className="h-1 w-12 bg-gradient-to-r from-luxury-gold to-royal-purple" />
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-frost-white">
+              Featured Work
             </h2>
           </div>
 
-          <p className="text-[#B0B4C8] max-w-2xl font-mono text-sm">
-            <span className="text-[#00FFD5]"># </span>
-            A collection of robotics projects blending engineering excellence with innovation
+          <p className="text-soft-silver max-w-2xl font-display text-sm tracking-wide">
+            A collection of robotics and intelligent systems projects that showcase engineering excellence
           </p>
         </div>
 
@@ -39,13 +36,13 @@ export default function ProjectsLab() {
         </div>
 
         {/* Lab footer note */}
-        <div className="mt-20 p-8 border border-[#00FFD5]/30 rounded-lg bg-[#0F1425]/50 text-center">
-          <p className="text-[#B0B4C8] font-mono text-sm mb-4">
-            <span className="text-[#00FFD5]">$</span> Each project demonstrates integration of hardware,
-            software, and intelligent systems
+        <div className="mt-20 p-8 border border-luxury-gold/30 rounded-lg bg-gradient-to-r from-royal-deep/50 to-royal-navy/50 text-center">
+          <p className="text-soft-silver font-display text-sm mb-4">
+            <span className="text-luxury-gold">✦</span> Each project demonstrates integration of advanced engineering,
+            intelligent systems, and elegant design
           </p>
-          <p className="text-[#00FFD5] font-mono text-xs">
-            {'> '} View details on projects above or check GitHub repositories
+          <p className="text-luxury-gold font-display text-xs tracking-wider">
+            {'> '} Explore detailed implementations and GitHub repositories
           </p>
         </div>
       </div>

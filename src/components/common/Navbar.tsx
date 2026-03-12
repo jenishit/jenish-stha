@@ -23,58 +23,57 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#0B0F1A]/95 backdrop-blur-md border-b border-[#00FFD5]/20'
+          ? 'bg-gradient-to-r from-royal-navy/95 via-royal-deep/90 to-royal-navy/95 backdrop-blur-xl border-b border-luxury-gold/20 shadow-luxury'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="font-mono text-xl font-bold">
-          <span className="text-[#00FFD5]">{'<'}</span>
-          <span className="text-white">JENISH LAB</span>
-          <span className="text-[#7C3AED]">{' />'}</span>
+      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        {/* Logo - Elegant serif style */}
+        <div className="font-serif text-2xl font-bold tracking-wide">
+          <span className="text-luxury-gold">✦</span>
+          <span className="text-frost-white ml-3 font-normal">Jenish</span>
+          <span className="text-luxury-gold ml-3">✦</span>
         </div>
 
         {/* Navigation Links */}
-        <div className="hidden md:flex items-center gap-8 font-mono text-sm">
+        <div className="hidden md:flex items-center gap-10 font-display text-sm font-500">
           <button
             onClick={() => handleNavClick('about')}
-            className="text-[#E5E7EB] hover:text-[#00FFD5] transition-colors duration-300"
+            className="relative text-soft-silver hover:text-luxury-gold transition-all duration-300 group"
           >
             Projects
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-luxury-gold to-royal-mauve group-hover:w-full transition-all duration-300"></span>
           </button>
           <button
             onClick={() => handleNavClick('research')}
-            className="text-[#E5E7EB] hover:text-[#00FFD5] transition-colors duration-300"
+            className="relative text-soft-silver hover:text-luxury-gold transition-all duration-300 group"
           >
             Research
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-luxury-gold to-royal-mauve group-hover:w-full transition-all duration-300"></span>
           </button>
           <button
             onClick={() => handleNavClick('skills')}
-            className="text-[#E5E7EB] hover:text-[#00FFD5] transition-colors duration-300"
+            className="relative text-soft-silver hover:text-luxury-gold transition-all duration-300 group"
           >
             Skills
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-luxury-gold to-royal-mauve group-hover:w-full transition-all duration-300"></span>
           </button>
           <button
             onClick={() => handleNavClick('contact')}
-            className="text-[#E5E7EB] hover:text-[#00FFD5] transition-colors duration-300"
+            className="relative text-soft-silver hover:text-luxury-gold transition-all duration-300 group"
           >
             Contact
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-luxury-gold to-royal-mauve group-hover:w-full transition-all duration-300"></span>
           </button>
-
-          {/* Console indicator */}
-          <div className="ml-4 pl-4 border-l border-[#00FFD5]/30">
-            <span className="text-[#00FFD5] text-xs">Press </span>
-            <span className="bg-[#1a1f3a] px-2 py-1 rounded text-[#00FFD5] font-bold">
-              Ctrl + K
-            </span>
-          </div>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
-          <button className="text-[#00FFD5] text-2xl">☰</button>
-        </div>
+        {/* CTA Button */}
+        <button
+          onClick={() => handleNavClick('contact')}
+          className="px-6 py-2.5 bg-gradient-to-r from-luxury-gold to-accent-gold text-royal-dark font-semibold rounded-full hover:shadow-glow-gold transition-all duration-300 transform hover:-translate-y-1 hidden sm:block"
+        >
+          Connect
+        </button>
       </div>
     </nav>
   );

@@ -1,48 +1,33 @@
-import type { Metadata } from 'next';
-import '../styles/globals.css';
+"use client";
+import type { Metadata } from "next";
+import "@/styles/globals.css";
+import { useEffect } from "react";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import CustomCursor from "@/components/ui/CustomCursor";
+import PageTransition from "@/components/ui/PageTransition";
+import SoundToggle from "@/components/ui/SoundToggle";
+import LenisProvider from "@/components/ui/LenisProvider";
 
-export const metadata: Metadata = {
-  title: 'Jenish | Developer Portfolio',
-  description: 'Jenish - developer portfolio, projects, AI experiments, and interactive web creations.',
-  authors: [{ name: 'Jenish', url: 'https://sjenish.com.np' }],
-  openGraph: {
-    title: 'Jenish | Developer Portfolio',
-    description: 'Jenish - developer portfolio, projects, AI experiments, and interactive web creations.',
-    url: 'https://sjenish.com.np',
-  },
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-[#0B0F1A] text-[#E5E7EB]">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Jenish",
-              url: "https://sjenish.com.np",
-              jobTitle: "Developer",
-              sameAs: [
-                "https://github.com/jenishit",
-                "https://linkedin.com/in/heyjenish",
-                "https://instagram.com/shades_of_shrestha"
-              ],
-              knowsAbout: [
-                "Web Development",
-                "Artificial Intelligence",
-                "Interactive Websites"
-              ]
-            })
-          }}
-        />
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+        <title>Jenish Shrestha — Engineer & Inventor</title>
+        <meta name="description" content="Portfolio of Jenish Shrestha — Embedded Systems Engineer, Robotics Builder, Software Developer from Nepal." />
+      </head>
+      <body>
+        <LenisProvider>
+          <CustomCursor />
+          <PageTransition />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <SoundToggle />
+        </LenisProvider>
       </body>
     </html>
   );

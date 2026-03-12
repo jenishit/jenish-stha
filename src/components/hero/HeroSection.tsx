@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import BootSequence from './BootSequence';
+import BlackHole from './BlackHole';
 
 export default function HeroSection() {
   const [bootComplete, setBootComplete] = useState(false);
@@ -25,116 +26,132 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Black hole background effect */}
+      <BlackHole />
+      
       {/* Boot sequence overlay */}
       {!bootComplete && <BootSequence />}
 
-      {/* Animated background elements */}
+      {/* Elegant background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Animated grid lines */}
+        {/* Subtle gradient orbs */}
+        <div
+          className="absolute w-96 h-96 bg-gradient-to-br from-luxury-gold via-transparent to-transparent rounded-full blur-3xl opacity-[0.08]"
+          style={{
+            top: '15%',
+            right: '5%',
+            animation: 'float 25s ease-in-out infinite',
+          }}
+        />
+        <div
+          className="absolute w-96 h-96 bg-gradient-to-tl from-royal-purple via-transparent to-transparent rounded-full blur-3xl opacity-[0.08]"
+          style={{
+            bottom: '10%',
+            left: '5%',
+            animation: 'float 30s ease-in-out infinite reverse',
+          }}
+        />
+        
+        {/* Subtle elegant grid */}
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(rgba(0, 255, 213, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 255, 213, 0.06) 1px, transparent 1px)
+            linear-gradient(rgba(200, 155, 75, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(200, 155, 75, 0.03) 1px, transparent 1px)
           `,
-          backgroundSize: '80px 80px',
+          backgroundSize: '100px 100px',
         }} />
-
-        {/* Floating gradients */}
-        <div
-          className="absolute w-96 h-96 bg-gradient-to-r from-[#00FFD5] to-transparent rounded-full blur-3xl opacity-10"
-          style={{
-            top: '20%',
-            right: '10%',
-            animation: 'float 20s ease-in-out infinite',
-          }}
-        />
-        <div
-          className="absolute w-96 h-96 bg-gradient-to-l from-[#7C3AED] to-transparent rounded-full blur-3xl opacity-10"
-          style={{
-            bottom: '20%',
-            left: '10%',
-            animation: 'float 25s ease-in-out infinite reverse',
-          }}
-        />
       </div>
 
       {/* Content */}
       {bootComplete && (
         <div
-          className={`relative z-10 max-w-6xl w-full px-4 transition-all duration-1000 ${
+          className={`relative z-10 max-w-7xl w-full px-6 transition-all duration-1000 ${
             textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Robot Section */}
-            <div className="flex flex-col items-center md:items-start gap-8">
-              {/* Robot Avatar */}
-              <div className="text-9xl animate-pulse drop-shadow-2xl" style={{
-                textShadow: '0 0 40px rgba(0, 255, 213, 0.5)',
-              }}>
-                🤖
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            {/* Left decorative element */}
+            <div className="flex flex-col items-center md:items-start gap-12">
+              {/* Elegant icon design instead of emoji */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-luxury-gold to-royal-purple rounded-3xl blur-2xl opacity-20 animate-pulse"></div>
+                <div className="relative w-28 h-28 flex items-center justify-center rounded-3xl bg-gradient-to-br from-luxury-gold/10 to-royal-purple/10 border border-luxury-gold/30 backdrop-blur-sm">
+                  <div className="text-4xl">⚡</div>
+                </div>
               </div>
 
-              {/* J-Bot Introduction */}
-              <div className="space-y-4">
-                <div className="text-lg text-[#00FFD5] font-mono">
-                  <span className="animate-pulse">{'>'}</span> Welcome to Jenish Lab
+              {/* Elegant introduction */}
+              <div className="space-y-6 max-w-sm">
+                <div className="space-y-2">
+                  <p className="text-luxury-gold text-sm font-display font-600 tracking-widest">WELCOME</p>
+                  <h2 className="text-3xl font-serif text-frost-white font-700">
+                    Your Creative Engineer
+                  </h2>
                 </div>
-                <div className="font-mono text-[#B0B4C8] space-y-1">
-                  <p>{'→'} Hello visitor. I am J-Bot.</p>
-                  <p>{'→'} Your guide through the engineering lab.</p>
-                  <p className="text-[#00FFD5]">{'→'} Ready to explore?</p>
-                </div>
+                <p className="text-soft-silver leading-relaxed font-display">
+                  Crafting elegant solutions at the intersection of innovation and artistry.
+                </p>
               </div>
             </div>
 
-            {/* Hero Text Section */}
-            <div className="space-y-8 text-center md:text-left">
-              <div>
-                <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-                  Engineer <span className="text-[#00FFD5]">Jenish</span>
+            {/* Right content section */}
+            <div className="space-y-10 text-center md:text-left">
+              <div className="space-y-6">
+                <h1 className="text-6xl md:text-7xl font-serif font-700 leading-tight">
+                  <span className="text-frost-white">Jenish</span>
+                  <br />
+                  <span className="bg-gradient-to-r from-luxury-gold via-accent-gold to-royal-mauve bg-clip-text text-transparent">
+                    Builds Tomorrow
+                  </span>
                 </h1>
-                <p className="text-xl md:text-2xl text-[#B0B4C8] font-mono">
-                  <span className="text-[#00FFD5]">Robotics</span> • <span className="text-[#7C3AED]">Embedded Systems</span> • <span className="text-[#00FFD5]">Machine Learning</span>
+                
+                <p className="text-xl text-soft-silver font-display leading-relaxed max-w-xl mx-auto md:mx-0">
+                  Specializing in robotics, embedded systems, and intelligent solutions that transform concepts into reality.
                 </p>
+
+                {/* Key skills highlight */}
+                <div className="flex flex-wrap gap-3 items-center justify-center md:justify-start pt-4">
+                  {['Robotics', 'AI/ML', 'Embedded Systems', 'IoT'].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-4 py-2 rounded-full bg-luxury-gold/10 border border-luxury-gold/30 text-luxury-gold text-sm font-display"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              <p className="text-[#E5E7EB] leading-relaxed max-w-lg mx-auto md:mx-0">
-                Transforming ideas into intelligent systems. Building autonomous robots, embedded devices,
-                and intelligent solutions that bridge hardware and software.
-              </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-8">
                 <button
                   onClick={() => handleScroll('about')}
-                  className="px-8 py-3 bg-[#00FFD5] text-[#0B0F1A] font-bold rounded-lg hover:shadow-lg hover:shadow-[#00FFD5]/50 transition-all duration-300 transform hover:-translate-y-1"
+                  className="group px-8 py-4 bg-gradient-to-r from-luxury-gold to-accent-gold text-royal-dark font-display font-600 rounded-full hover:shadow-glow-gold transition-all duration-400 transform hover:-translate-y-1 luxury-hover"
                 >
-                  Enter The Lab
+                  Explore Work
                 </button>
                 <button
                   onClick={() => handleScroll('projects')}
-                  className="px-8 py-3 border-2 border-[#00FFD5] text-[#00FFD5] font-bold rounded-lg hover:bg-[#00FFD5]/10 transition-all duration-300 transform hover:-translate-y-1"
+                  className="group px-8 py-4 border-2 border-luxury-gold/50 text-luxury-gold font-display font-600 rounded-full hover:bg-luxury-gold/5 hover:border-luxury-gold transition-all duration-400 transform hover:-translate-y-1"
                 >
-                  View Projects
+                  View Portfolio
                 </button>
               </div>
 
-              {/* Terminal hint */}
-              <div className="pt-8 border-t border-[#00FFD5]/20">
-                <p className="text-sm text-[#B0B4C8] font-mono">
-                  <span className="text-[#00FFD5]">Hint:</span> Press <span className="bg-[#1a1f3a] px-2 rounded">Ctrl + K</span> to open the lab console
+              {/* Decorative line */}
+              <div className="pt-8 border-t border-luxury-gold/20">
+                <p className="text-sm text-soft-silver font-display">
+                  <span className="text-luxury-gold">↓</span> Scroll to discover more
                 </p>
               </div>
             </div>
           </div>
 
           {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
-            <p className="text-[#B0B4C8] text-sm mb-2">Scroll to explore</p>
+          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-center">
             <div className="animate-bounce">
               <svg
-                className="w-6 h-6 text-[#00FFD5] mx-auto"
+                className="w-6 h-6 text-luxury-gold mx-auto"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

@@ -14,30 +14,30 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative bg-[#1a1f3a] border-2 border-[#00FFD5] rounded-lg p-6 cursor-pointer transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,213,0.4)]"
+      className="group relative bg-gradient-to-br from-royal-deep/40 to-royal-navy/40 border-2 border-luxury-gold/30 rounded-lg p-6 cursor-pointer transition-all duration-400 hover:shadow-glow-gold luxury-hover"
     >
       {/* Border glow */}
       {isHovered && (
-        <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#00FFD5] to-[#7C3AED] opacity-10 pointer-events-none" />
+        <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-luxury-gold/10 to-royal-purple/10 pointer-events-none" />
       )}
 
       {/* Content */}
       <div className="relative z-10">
-        <h3 className="text-lg font-bold text-[#00FFD5] mb-2">{project.title}</h3>
-        <p className="text-sm text-[#E5E7EB] mb-4">{project.description}</p>
+        <h3 className="text-lg font-serif font-bold text-luxury-gold mb-2">{project.title}</h3>
+        <p className="text-sm text-soft-silver mb-4">{project.description}</p>
 
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tech.slice(0, 3).map((tech, idx) => (
             <span
               key={idx}
-              className="text-xs px-2 py-1 bg-[#0B0F1A] border border-[#7C3AED] text-[#7C3AED] rounded"
+              className="text-xs px-2 py-1 bg-luxury-gold/10 border border-luxury-gold/40 text-luxury-gold rounded font-display"
             >
               {tech}
             </span>
           ))}
           {project.tech.length > 3 && (
-            <span className="text-xs px-2 py-1 text-[#00FFD5]">
+            <span className="text-xs px-2 py-1 text-luxury-gold font-display">
               +{project.tech.length - 3} more
             </span>
           )}
@@ -45,7 +45,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* CTA */}
         {isHovered && (
-          <button className="text-[#00FFD5] font-mono text-sm hover:text-[#7C3AED] transition-colors">
+          <button className="text-luxury-gold font-display text-sm hover:text-accent-gold transition-colors">
             View Details →
           </button>
         )}

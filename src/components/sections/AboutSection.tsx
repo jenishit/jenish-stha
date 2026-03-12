@@ -4,31 +4,31 @@ export default function AboutSection() {
   return (
     <section id="about" className="min-h-screen flex items-center justify-center py-20 px-4">
       <div className="max-w-4xl w-full">
-        <div className="border-l-4 border-[#00FFD5] pl-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#00FFD5] mb-8">
-            The Engineer Behind the Machines
+        <div className="border-l-4 border-luxury-gold pl-8">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-luxury-gold mb-8">
+            The Engineer Behind Excellence
           </h2>
 
-          <div className="space-y-6 text-[#E5E7EB] leading-relaxed">
+          <div className="space-y-6 text-soft-silver leading-relaxed font-display">
             <p>
-              Jenish is an enthusiastic engineering student passionate about robotics,
-              embedded systems, machine learning, and building real-world intelligent
-              systems. His journey in technology is driven by a desire to create practical
-              solutions that blend hardware and software seamlessly.
+              Jenish is a passionate engineering innovator with a drive for creating elegant
+              solutions in robotics and intelligent systems. With expertise spanning embedded
+              systems, machine learning, and IoT technologies, he transforms complex technical
+              challenges into refined, practical implementations.
             </p>
 
             <p>
-              He enjoys combining hardware and software to create practical solutions
-              using sensors, microcontrollers, and modern programming techniques. From
-              autonomous robots to IoT monitoring systems, Jenish approaches every
-              project with meticulous engineering principles and creative problem-solving.
+              His methodology combines meticulous hardware design with sophisticated software
+              architecture, leveraging microcontrollers, advanced sensors, and cutting-edge
+              programming paradigms. From autonomous robotics to intelligent monitoring systems,
+              each project reflects a commitment to engineering excellence and continuous innovation.
             </p>
 
             <p>
-              His experience spans across robotics systems, IoT devices, environmental
-              monitoring systems, machine learning projects, and embedded systems design.
-              Each project represents a commitment to innovation and continuous learning
-              in the rapidly evolving field of robotics and intelligent systems.
+              Specializing in robotics systems, IoT platforms, environmental monitoring, and
+              machine learning applications, Jenish approaches every challenge with precision
+              and creative vision—dedicated to advancing the frontiers of intelligent automation
+              and system design.
             </p>
           </div>
         </div>

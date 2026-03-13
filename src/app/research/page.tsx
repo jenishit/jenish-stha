@@ -81,7 +81,7 @@ export default function ResearchPage() {
           transition={{ delay: 0.5 }}
           className="mt-12 glass border border-accent-red/20 p-6 font-mono text-xs"
         >
-          <p className="text-accent-red mb-1">{'// note.md'}</p>
+          <p className="text-accent-red mb-1">// note.md</p>
           <p className="text-text-muted">
             These projects are experimental. Some will ship. Some will teach me something and get shelved.
             Either way — the process is the point. If any of these excite you, let's collaborate.

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
 import { blogPosts } from "@/data/blogs";
 import { formatDate } from "@/lib/utils";
-import Image from "next/image";
 
 export default function BlogPostPage() {
   const params = useParams();
@@ -68,7 +67,7 @@ export default function BlogPostPage() {
           transition={{ delay: 0.3 }}
           className="mb-10 aspect-video bg-surface-2 border border-border overflow-hidden"
         >
-          <Image src={post.coverImage} alt={post.title} className="w-full h-full object-cover"
+          <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover"
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
           />
         </motion.div>
@@ -82,7 +81,7 @@ export default function BlogPostPage() {
         >
           <p>{post.excerpt}</p>
           <div className="glass border border-border p-4">
-            <p className="text-accent-red text-[10px] mb-2">{'// blog_content.mdx'}</p>
+            <p className="text-accent-red text-[10px] mb-2">// blog_content.mdx</p>
             <p>
               Full article content goes here. Add MDX files to <code className="text-accent-brown">src/content/blog/{post.slug}.mdx</code> to populate this page with rich content, code blocks, and embedded media.
             </p>

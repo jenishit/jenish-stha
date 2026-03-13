@@ -1,7 +1,5 @@
 "use client";
-import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";

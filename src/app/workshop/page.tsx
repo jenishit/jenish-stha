@@ -55,7 +55,7 @@ class SuitAudio {
     // Metallic clank
     const len = Math.floor(this.ctx.sampleRate * 0.22);
     const buf = this.ctx.createBuffer(1, len, this.ctx.sampleRate);
-    const ch  = buf.getChannelData(0);
+    const ch = buf.getChannelData(0);
     for (let i = 0; i < len; i++)
       ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 1.3);
     const src = this.ctx.createBufferSource(); src.buffer = buf;
@@ -78,7 +78,7 @@ class SuitAudio {
     const now = this.ctx.currentTime;
     const len = Math.floor(this.ctx.sampleRate * 0.45);
     const buf = this.ctx.createBuffer(1, len, this.ctx.sampleRate);
-    const ch  = buf.getChannelData(0);
+    const ch = buf.getChannelData(0);
     for (let i = 0; i < len; i++)
       ch[i] = (Math.random() * 2 - 1) * Math.sin((i / len) * Math.PI) * 0.55;
     const src = this.ctx.createBufferSource(); src.buffer = buf;
@@ -102,7 +102,7 @@ class SuitAudio {
     osc.connect(flt); flt.connect(g); g.connect(this.master!); osc.start(now); osc.stop(now + 2.3);
     // Arc reactor hum
     const hum = this.ctx.createOscillator(); hum.frequency.value = 120;
-    const hg  = this.ctx.createGain();
+    const hg = this.ctx.createGain();
     hg.gain.setValueAtTime(0, now + 1.0); hg.gain.linearRampToValueAtTime(0.2, now + 1.6);
     hg.gain.setValueAtTime(0.2, now + 3.0); hg.gain.linearRampToValueAtTime(0, now + 4.2);
     hum.connect(hg); hg.connect(this.master!); hum.start(now + 1.0); hum.stop(now + 4.3);
@@ -114,21 +114,21 @@ const suitAudio = new SuitAudio();
 
 // ─── Welding sparks ───────────────────────────────────────────────────────────
 function Sparks({ active, pos }: { active: boolean; pos: THREE.Vector3 }) {
-  const ref  = useRef<THREE.Points>(null);
-  const N    = 160;
-  const vel  = useRef(new Float32Array(N * 3));
+  const ref = useRef<THREE.Points>(null);
+  const N = 160;
+  const vel = useRef(new Float32Array(N * 3));
   const ages = useRef(new Float32Array(N));
-  const arr  = useRef(new Float32Array(N * 3));
+  const arr = useRef(new Float32Array(N * 3));
 
   useEffect(() => {
     for (let i = 0; i < N; i++) {
-      arr.current[i*3]   = pos.x;
-      arr.current[i*3+1] = pos.y;
-      arr.current[i*3+2] = pos.z;
-      vel.current[i*3]   = (Math.random() - 0.5) * 0.32;
-      vel.current[i*3+1] = Math.random() * 0.44 + 0.06;
-      vel.current[i*3+2] = (Math.random() - 0.5) * 0.32;
-      ages.current[i]    = Math.random();
+      arr.current[i * 3] = pos.x;
+      arr.current[i * 3 + 1] = pos.y;
+      arr.current[i * 3 + 2] = pos.z;
+      vel.current[i * 3] = (Math.random() - 0.5) * 0.32;
+      vel.current[i * 3 + 1] = Math.random() * 0.44 + 0.06;
+      vel.current[i * 3 + 2] = (Math.random() - 0.5) * 0.32;
+      ages.current[i] = Math.random();
     }
   }, [pos.x, pos.y, pos.z]);
 
@@ -138,15 +138,15 @@ function Sparks({ active, pos }: { active: boolean; pos: THREE.Vector3 }) {
     for (let i = 0; i < N; i++) {
       ages.current[i] += dt * 2.8;
       if (ages.current[i] > 1) {
-        p[i*3]=pos.x; p[i*3+1]=pos.y; p[i*3+2]=pos.z;
-        vel.current[i*3]   = (Math.random()-0.5)*0.32;
-        vel.current[i*3+1] = Math.random()*0.44+0.06;
-        vel.current[i*3+2] = (Math.random()-0.5)*0.32;
+        p[i * 3] = pos.x; p[i * 3 + 1] = pos.y; p[i * 3 + 2] = pos.z;
+        vel.current[i * 3] = (Math.random() - 0.5) * 0.32;
+        vel.current[i * 3 + 1] = Math.random() * 0.44 + 0.06;
+        vel.current[i * 3 + 2] = (Math.random() - 0.5) * 0.32;
         ages.current[i] = 0;
       }
-      p[i*3]   += vel.current[i*3]   * dt * 18;
-      p[i*3+1] += vel.current[i*3+1] * dt * 18 - 0.022;
-      p[i*3+2] += vel.current[i*3+2] * dt * 18;
+      p[i * 3] += vel.current[i * 3] * dt * 18;
+      p[i * 3 + 1] += vel.current[i * 3 + 1] * dt * 18 - 0.022;
+      p[i * 3 + 2] += vel.current[i * 3 + 2] * dt * 18;
     }
     ref.current.geometry.attributes.position.needsUpdate = true;
   });
@@ -170,18 +170,18 @@ function Sparks({ active, pos }: { active: boolean; pos: THREE.Vector3 }) {
 // scrollStart/End    : when in the 0→1 scroll range this slice animates
 //
 const SLICES = [
-  { id:"boots",     label:"Boot Thrusters",    desc:"Repulsor jets · Mag-lock sole",       yLo:0.00, yHi:0.13, flyDir:new THREE.Vector3(  0,-30,  0), ss:0.00, se:0.10 },
-  { id:"shins",     label:"Lower Legs",         desc:"Carbon fibre · Shock absorber",       yLo:0.13, yHi:0.28, flyDir:new THREE.Vector3(-20,-16,  5), ss:0.09, se:0.19 },
-  { id:"knees",     label:"Knee Assemblies",    desc:"Hydraulic joint · Servo motor",       yLo:0.28, yHi:0.38, flyDir:new THREE.Vector3( 20, -8,  5), ss:0.17, se:0.27 },
-  { id:"thighs",    label:"Upper Legs",         desc:"Servo-hydraulic · Titanium alloy",    yLo:0.38, yHi:0.50, flyDir:new THREE.Vector3(-22,  0, -5), ss:0.25, se:0.35 },
-  { id:"pelvis",    label:"Pelvic Core",        desc:"Structural load-bearing frame",       yLo:0.50, yHi:0.58, flyDir:new THREE.Vector3(  0,-20, -8), ss:0.33, se:0.43 },
-  { id:"abdomen",   label:"Abdomen Plate",      desc:"Nano-fiber composite armour",         yLo:0.58, yHi:0.66, flyDir:new THREE.Vector3( 22,  4, -5), ss:0.40, se:0.50 },
-  { id:"chest",     label:"Chest Plate",        desc:"Arc reactor housing · Nano-fiber",    yLo:0.66, yHi:0.76, flyDir:new THREE.Vector3(  0, 30,  0), ss:0.48, se:0.58 },
-  { id:"arms",      label:"Arm Assemblies",     desc:"Bicep + forearm · Elbow hinge",       yLo:0.55, yHi:0.72, flyDir:new THREE.Vector3(-24,  8,-10), ss:0.55, se:0.65 },
-  { id:"shoulders", label:"Shoulder Pauldrons", desc:"270° rotary actuators",               yLo:0.72, yHi:0.82, flyDir:new THREE.Vector3( 24, 14,  0), ss:0.62, se:0.72 },
-  { id:"hands",     label:"Gauntlets",          desc:"Palm repulsor · 5-digit servo",       yLo:0.30, yHi:0.48, flyDir:new THREE.Vector3(-24, -4, 12), ss:0.68, se:0.78 },
-  { id:"neck",      label:"Neck Collar",        desc:"360° gyro-stabilised ring",           yLo:0.82, yHi:0.88, flyDir:new THREE.Vector3(  0, 24,  8), ss:0.76, se:0.86 },
-  { id:"helmet",    label:"Helmet",             desc:"HUD · AI core · Vision array",        yLo:0.88, yHi:1.00, flyDir:new THREE.Vector3(  0, 40,  0), ss:0.84, se:0.96 },
+  { id: "boots", label: "Boot Thrusters", desc: "Repulsor jets · Mag-lock sole", yLo: 0.00, yHi: 0.13, flyDir: new THREE.Vector3(0, -60, 0), ss: 0.00, se: 0.12 },
+  { id: "shins", label: "Lower Legs", desc: "Carbon fibre · Shock absorber", yLo: 0.13, yHi: 0.28, flyDir: new THREE.Vector3(-45, -30, 10), ss: 0.08, se: 0.20 },
+  { id: "knees", label: "Knee Assemblies", desc: "Hydraulic joint · Servo motor", yLo: 0.28, yHi: 0.38, flyDir: new THREE.Vector3(45, -18, 10), ss: 0.16, se: 0.28 },
+  { id: "thighs", label: "Upper Legs", desc: "Servo-hydraulic · Titanium alloy", yLo: 0.38, yHi: 0.50, flyDir: new THREE.Vector3(-50, 0, -12), ss: 0.24, se: 0.36 },
+  { id: "pelvis", label: "Pelvic Core", desc: "Structural load-bearing frame", yLo: 0.50, yHi: 0.58, flyDir: new THREE.Vector3(0, -40, -18), ss: 0.32, se: 0.44 },
+  { id: "abdomen", label: "Abdomen Plate", desc: "Nano-fiber composite armour", yLo: 0.58, yHi: 0.66, flyDir: new THREE.Vector3(50, 8, -12), ss: 0.39, se: 0.51 },
+  { id: "chest", label: "Chest Plate", desc: "Arc reactor housing · Nano-fiber", yLo: 0.66, yHi: 0.76, flyDir: new THREE.Vector3(0, 55, 0), ss: 0.46, se: 0.58 },
+  { id: "arms", label: "Arm Assemblies", desc: "Bicep + forearm · Elbow hinge", yLo: 0.55, yHi: 0.72, flyDir: new THREE.Vector3(-55, 15, -20), ss: 0.53, se: 0.65 },
+  { id: "shoulders", label: "Shoulder Pauldrons", desc: "270° rotary actuators", yLo: 0.72, yHi: 0.82, flyDir: new THREE.Vector3(55, 28, 0), ss: 0.60, se: 0.72 },
+  { id: "hands", label: "Gauntlets", desc: "Palm repulsor · 5-digit servo", yLo: 0.30, yHi: 0.48, flyDir: new THREE.Vector3(-55, -8, 25), ss: 0.67, se: 0.79 },
+  { id: "neck", label: "Neck Collar", desc: "360° gyro-stabilised ring", yLo: 0.82, yHi: 0.88, flyDir: new THREE.Vector3(0, 50, 18), ss: 0.74, se: 0.86 },
+  { id: "helmet", label: "Helmet", desc: "HUD · AI core · Vision array", yLo: 0.88, yHi: 1.00, flyDir: new THREE.Vector3(0, 70, 0), ss: 0.82, se: 0.96 },
 ] as const;
 
 // ─── The Iron Man model component ─────────────────────────────────────────────
@@ -190,24 +190,24 @@ function IronManModel({
   onSnap,
   onComplete,
 }: {
-  progress:   number;
-  onSnap:     (id: string) => void;
+  progress: number;
+  onSnap: (id: string) => void;
   onComplete: () => void;
 }) {
   const { scene } = useGLTF("/models/ironman.glb") as any;
 
   // ── Data per mesh ──────────────────────────────────────────────────────────
   type MeshData = {
-    mesh:     THREE.Mesh;
-    origPos:  THREE.Vector3;  // local position in assembled state
-    flyVec:   THREE.Vector3;  // WORLD-SPACE direction it flies in from (local coords)
+    mesh: THREE.Mesh;
+    origPos: THREE.Vector3;  // local position in assembled state
+    flyVec: THREE.Vector3;  // WORLD-SPACE direction it flies in from (local coords)
     sliceIdx: number;
   };
 
-  const meshData      = useRef<MeshData[]>([]);
-  const rootRef       = useRef<THREE.Group>(null);
-  const idleT         = useRef(0);
-  const isSetup       = useRef(false);
+  const meshData = useRef<MeshData[]>([]);
+  const rootRef = useRef<THREE.Group>(null);
+  const idleT = useRef(0);
+  const isSetup = useRef(false);
   const snappedSlices = useRef(new Set<string>());
   const completeFired = useRef(false);
 
@@ -217,23 +217,23 @@ function IronManModel({
     isSetup.current = true;
 
     // ── 1. Scale model so its tallest dimension = 5 world units ──────────────
-    const box0   = new THREE.Box3().setFromObject(scene);
-    const size0  = box0.getSize(new THREE.Vector3());
+    const box0 = new THREE.Box3().setFromObject(scene);
+    const size0 = box0.getSize(new THREE.Vector3());
     const maxDim = Math.max(size0.x, size0.y, size0.z);
-    const scale  = 5.0 / (maxDim || 1);
+    const scale = 5.0 / (maxDim || 1);
     scene.scale.setScalar(scale);
 
     // ── 2. Recompute bounding box after scaling and centre the model ──────────
     // Feet on y=0, centred on x and z
-    const box1   = new THREE.Box3().setFromObject(scene);
-    const cen1   = box1.getCenter(new THREE.Vector3());
+    const box1 = new THREE.Box3().setFromObject(scene);
+    const cen1 = box1.getCenter(new THREE.Vector3());
     scene.position.set(-cen1.x, -box1.min.y, -cen1.z);
     scene.updateMatrixWorld(true);
 
     // ── 3. Get total Y extent (world space) for normalising ────────────────
-    const box2     = new THREE.Box3().setFromObject(scene);
+    const box2 = new THREE.Box3().setFromObject(scene);
     const totalMinY = box2.min.y;
-    const totalH    = (box2.max.y - box2.min.y) || 1;
+    const totalH = (box2.max.y - box2.min.y) || 1;
 
     // ── 4. Walk every Mesh, assign to a slice, record origPos and flyVec ─────
     const newData: MeshData[] = [];
@@ -244,16 +244,16 @@ function IronManModel({
       // World-space bounding centre of this mesh
       const mb = new THREE.Box3().setFromObject(obj);
       if (mb.isEmpty()) return;
-      const mc   = mb.getCenter(new THREE.Vector3());
-      const ms   = mb.getSize(new THREE.Vector3());
+      const mc = mb.getCenter(new THREE.Vector3());
+      const ms = mb.getSize(new THREE.Vector3());
 
       // Normalised Y position of this mesh (0=feet 1=head)
       const normY = (mc.y - totalMinY) / totalH;
 
       // Arms and hands are wide at mid-height — detect them by x-extent
       const wideAtMid = ms.x > totalH * 0.11;
-      const isArm     = wideAtMid && normY > 0.52 && normY < 0.74;
-      const isHand    = wideAtMid && normY > 0.30 && normY < 0.52;
+      const isArm = wideAtMid && normY > 0.52 && normY < 0.74;
+      const isHand = wideAtMid && normY > 0.30 && normY < 0.52;
 
       // Find which slice owns this mesh
       let sliceIdx = SLICES.length - 1; // default to helmet (last)
@@ -277,7 +277,7 @@ function IronManModel({
       // so the offset is consistent regardless of nested transforms.
       // We divide by scale (the root scale factor).
       const invScale = 1 / scale;
-      const flyVec   = SLICES[sliceIdx].flyDir.clone().multiplyScalar(invScale);
+      const flyVec = SLICES[sliceIdx].flyDir.clone().multiplyScalar(invScale);
 
       newData.push({ mesh: obj as THREE.Mesh, origPos, flyVec, sliceIdx });
     });
@@ -330,6 +330,10 @@ function IronManModel({
       if (lp <= 0) {
         d.mesh.visible = false;
         d.mesh.position.copy(d.origPos).add(d.flyVec); // keep at spawn
+        // Reset emissive for hidden meshes
+        if ((d.mesh.material as any).emissive) {
+          (d.mesh.material as any).emissiveIntensity = 0;
+        }
         continue;
       }
 
@@ -348,6 +352,15 @@ function IronManModel({
       d.mesh.position
         .copy(d.origPos)
         .addScaledVector(d.flyVec, factor);
+
+      // ── Emissive glow during flight (bright while far, fades as it lands) ──
+      if ((d.mesh.material as any).emissive) {
+        const glowIntensity = factor * 0.8; // glows while flying, 0 when landed
+        (d.mesh.material as any).emissiveIntensity = glowIntensity;
+        if (glowIntensity > 0.01) {
+          (d.mesh.material as any).emissive.setHex(0xC0392B); // red glow
+        }
+      }
 
       // Keep original rotation throughout (no individual mesh spinning)
       // This ensures the part arrives in the correct orientation
@@ -377,7 +390,7 @@ function IronManModel({
 
       {/* Sparks burst at each slice's snap point */}
       {SLICES.map(sl => {
-        const lp     = clamp((progress - sl.ss) / (sl.se - sl.ss), 0, 1);
+        const lp = clamp((progress - sl.ss) / (sl.se - sl.ss), 0, 1);
         const active = lp > 0.72 && lp < 0.99;
         const sparkY = ((sl.yLo + sl.yHi) / 2) * 5 - 0.4;
         return (
@@ -394,7 +407,7 @@ function IronManModel({
 
 // ─── Snap flash light ─────────────────────────────────────────────────────────
 function SnapFlash({ trigger }: { trigger: number }) {
-  const ref  = useRef<THREE.PointLight>(null);
+  const ref = useRef<THREE.PointLight>(null);
   const prev = useRef(0);
   useFrame(() => {
     if (!ref.current) return;
@@ -407,7 +420,7 @@ function SnapFlash({ trigger }: { trigger: number }) {
 // ─── Animated floor rings ─────────────────────────────────────────────────────
 function FloorRings({ done }: { done: boolean }) {
   const gRef = useRef<THREE.Group>(null);
-  const t    = useRef(0);
+  const t = useRef(0);
   useFrame((_, dt) => {
     t.current += dt;
     if (gRef.current) gRef.current.rotation.z = t.current * 0.28;
@@ -434,7 +447,7 @@ function FloorRings({ done }: { done: boolean }) {
 function CameraRig({ progress }: { progress: number }) {
   useFrame(({ camera }) => {
     const tz = lerp(17, 9, easeOutQuart(progress));
-    const ty = lerp(4,  2, easeOutQuart(progress));
+    const ty = lerp(4, 2, easeOutQuart(progress));
     camera.position.z = lerp(camera.position.z, tz, 0.022);
     camera.position.y = lerp(camera.position.y, ty, 0.022);
     camera.lookAt(0, 2, 0);
@@ -445,7 +458,7 @@ function CameraRig({ progress }: { progress: number }) {
 // ─── Hologram while GLB loads ─────────────────────────────────────────────────
 function Hologram() {
   const ref = useRef<THREE.Group>(null);
-  const t   = useRef(0);
+  const t = useRef(0);
   useFrame((_, dt) => {
     t.current += dt;
     if (ref.current) ref.current.rotation.y = t.current * 0.5;
@@ -453,7 +466,7 @@ function Hologram() {
   return (
     <group ref={ref} position={[0, 2, 0]}>
       {[1.3, 0].map((r, i) => (
-        <mesh key={i} rotation={i === 1 ? [Math.PI/2, 0, 0] : [0, 0, 0]}>
+        <mesh key={i} rotation={i === 1 ? [Math.PI / 2, 0, 0] : [0, 0, 0]}>
           <torusGeometry args={[1.3, 0.025, 8, 80]} />
           <meshBasicMaterial
             color={i === 0 ? "#40C4FF" : "#C0392B"}
@@ -476,8 +489,8 @@ function WorkshopScene({
   onSnap,
   onComplete,
 }: {
-  progress:   number;
-  onSnap:     (id: string) => void;
+  progress: number;
+  onSnap: (id: string) => void;
   onComplete: () => void;
 }) {
   const [snapTrig, setSnapTrig] = useState(0);
@@ -507,10 +520,10 @@ function WorkshopScene({
         color="#FFF5E0" angle={0.28} penumbra={0.75} castShadow
         shadow-mapSize={[2048, 2048]}
       />
-      <pointLight position={[-10, 5, 5]}  intensity={1.6} color="#1A5FC8" />
-      <pointLight position={[ 10, 4, -6]} intensity={1.4} color="#C9960C" />
-      <pointLight position={[  0,-10, 5]} intensity={done ? 7 : 1.5} color="#B71C1C" distance={24} />
-      <pointLight position={[  0, 8,-12]} intensity={0.9} color="#B0BEC5" />
+      <pointLight position={[-10, 5, 5]} intensity={1.6} color="#1A5FC8" />
+      <pointLight position={[10, 4, -6]} intensity={1.4} color="#C9960C" />
+      <pointLight position={[0, -10, 5]} intensity={done ? 7 : 1.5} color="#B71C1C" distance={24} />
+      <pointLight position={[0, 8, -12]} intensity={0.9} color="#B0BEC5" />
       <SnapFlash trigger={snapTrig} />
 
       {/* HDRI: realistic metal reflections */}
@@ -552,16 +565,18 @@ function WorkshopScene({
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function WorkshopPage() {
-  const containerRef            = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
   const [audioReady, setAudioReady] = useState(false);
-  const [isDone, setIsDone]     = useState(false);
-  const { scrollYProgress }     = useScroll({ target: containerRef });
+  const [isDone, setIsDone] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
+  const { scrollYProgress } = useScroll();
 
-  // Map scroll 0→0.88 to progress 0→1
-  // (leaving 12% at the bottom so user can read the completed suit before scrolling away)
+  // Document-level scroll progress: 0 at top, 1 at bottom.
+  // Map 0→0.92 of page scroll to 0→1 assembly progress
+  // (leaving 8% at the bottom for the post-workshop section)
   useEffect(() =>
-    scrollYProgress.on("change", v => setProgress(clamp(v / 0.88, 0, 1))),
+    scrollYProgress.on("change", v => setProgress(clamp(v / 0.92, 0, 1))),
     [scrollYProgress]
   );
 
@@ -599,7 +614,8 @@ export default function WorkshopPage() {
           {/* Header */}
           <div className="px-6 pt-3 pb-0 flex items-start justify-between shrink-0">
             <div>
-              <p className="section-tag">{'// workshop.3d — MARK L SUIT-UP'}</p>
+              <p className="section-tag">// workshop.3d — MARK L SUIT-UP</p>
+              <p className="text-text-muted">This page is under construction</p>
               <h1 className="font-display text-4xl md:text-5xl text-text-primary tracking-wide leading-none mt-1">
                 BUILD LAB
               </h1>
@@ -610,8 +626,8 @@ export default function WorkshopPage() {
                 {isDone
                   ? "● MARK L ONLINE"
                   : progress === 0
-                  ? "● AWAITING DEPLOYMENT"
-                  : `● DEPLOYING ${pct}%`}
+                    ? "● AWAITING DEPLOYMENT"
+                    : `● DEPLOYING ${pct}%`}
               </p>
               {!isDone && progress > 0 && (
                 <p className="text-[9px] text-text-muted mt-0.5">{activeSlice.label}</p>
@@ -636,19 +652,19 @@ export default function WorkshopPage() {
             <div className="absolute left-3 top-2 flex flex-col gap-[3px]">
               {SLICES.map(sl => {
                 const lp = clamp((progress - sl.ss) / (sl.se - sl.ss), 0, 1);
-                const done   = lp >= 0.99;
+                const done = lp >= 0.99;
                 const active = lp > 0.05 && !done;
                 return (
                   <motion.div
                     key={sl.id}
-                    animate={{ opacity: done?1:active?0.88:0.2, x: active?4:0 }}
+                    animate={{ opacity: done ? 1 : active ? 0.88 : 0.2, x: active ? 4 : 0 }}
                     transition={{ duration: 0.2 }}
                     className="flex items-center gap-1.5 font-mono text-[9px]"
                   >
-                    <span className={done?"text-accent-red":active?"text-yellow-400":"text-text-muted"}>
+                    <span className={done ? "text-accent-red" : active ? "text-yellow-400" : "text-text-muted"}>
                       {done ? "✓" : active ? "▶" : "○"}
                     </span>
-                    <span className={done?"text-text-primary":active?"text-yellow-100":"text-text-muted"}>
+                    <span className={done ? "text-text-primary" : active ? "text-yellow-100" : "text-text-muted"}>
                       {sl.label}
                     </span>
                   </motion.div>
@@ -660,8 +676,8 @@ export default function WorkshopPage() {
             {!isDone && progress > 0.01 && (
               <motion.div
                 key={activeSlice.id}
-                initial={{ opacity:0, x:20 }}
-                animate={{ opacity:1, x:0 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
                 className="absolute right-3 top-2 glass border border-accent-red/30 p-3 w-52 font-mono"
               >
                 <p className="text-[9px] text-accent-red tracking-widest mb-1">DEPLOYING MODULE</p>
@@ -701,23 +717,32 @@ export default function WorkshopPage() {
             </div>
 
             {/* MARK L ACTIVATED overlay */}
-            {isDone && (
+            {isDone && showOverlay && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                className="absolute inset-0 flex items-center justify-center"
+                style={{ pointerEvents: "auto" }}
               >
                 <motion.div
                   initial={{ scale: 0.4, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ type: "spring", stiffness: 220, damping: 20, delay: 0.5 }}
-                  className="glass-strong border border-accent-red p-10 text-center"
+                  className="glass-strong border border-accent-red p-10 text-center relative"
                   style={{
                     boxShadow:
                       "0 0 120px rgba(192,57,43,0.65), 0 0 250px rgba(212,160,23,0.22), inset 0 0 60px rgba(192,57,43,0.07)",
                   }}
                 >
+                  {/* Close button */}
+                  <button
+                    onClick={() => setShowOverlay(false)}
+                    className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center border border-accent-red/40 text-text-muted hover:text-accent-red hover:border-accent-red transition-all duration-300 font-mono text-xs"
+                    data-hover
+                  >
+                    ✕
+                  </button>
                   <p className="font-mono text-[9px] text-accent-red tracking-[0.6em] mb-3">
                     J.A.R.V.I.S. ONLINE
                   </p>

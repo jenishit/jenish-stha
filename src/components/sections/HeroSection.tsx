@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { scrambleText } from "@/lib/utils";
-import Image from "next/image";
 
 const RobotGlobe = dynamic(() => import("@/components/three/RobotGlobe"), { ssr: false });
 const BackgroundScene = dynamic(() => import("@/components/three/BackgroundScene"), { ssr: false });
@@ -118,7 +117,7 @@ export default function HeroSection() {
 
                 {/* The photo */}
                 <div className="relative w-72 h-96 md:w-80 md:h-[420px] overflow-hidden bg-surface">
-                  <Image
+                  <img
                     src="/images/hero-photo.png"
                     alt="Jenish Shrestha"
                     className="w-full h-full object-cover object-top"
@@ -201,7 +200,7 @@ export default function HeroSection() {
                 animate={showContent ? { opacity: 1 } : {}}
                 transition={{ duration: 0.5 }}
               >
-                <p className="section-tag mb-4">{'// Portfolio v1.0'}</p>
+                <p className="section-tag mb-4">// Portfolio v1.0</p>
                 <h1 className="font-display text-6xl md:text-8xl leading-none tracking-wide text-text-primary">
                   {nameText}
                 </h1>

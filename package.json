@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "npmrc": "legacy-peer-deps=true",
   "dependencies": {
     "@gsap/react": "^2.1.1",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -41,8 +42,8 @@
     "@types/react-dom": "^18.3.0",
     "@types/three": "^0.167.0",
     "autoprefixer": "^10.4.19",
-    "eslint": "^10.0.3",
-    "eslint-config-next": "14.2.5",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^16.1.6",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4"

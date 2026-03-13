@@ -7,6 +7,7 @@ const nextConfig = {
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
     ],
   },
+  turbopack: {},
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(glb|gltf)$/,

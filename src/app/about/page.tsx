@@ -81,8 +81,8 @@ export default function AboutPage() {
               I love the moment when code meets hardware and something real happens.
             </motion.p>
             <motion.p variants={fadeUp} className="font-mono text-sm text-text-muted leading-relaxed mb-8">
-              Currently pursuing <span className="text-accent-red">B.Sc. CSIT at Tribhuvan University</span> and
-              working on my thesis about ML-powered audio transcription.
+              Currently pursuing <span className="text-accent-red">B.Sc. CSIT at St. Xavier's College</span> and
+              working on my final year project "A CBT based testing platform".
             </motion.p>
             <motion.div variants={fadeUp} className="grid grid-cols-2 gap-4">
               {[
